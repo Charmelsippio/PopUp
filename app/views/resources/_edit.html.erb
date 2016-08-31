@@ -1,0 +1,19 @@
+
+<%= form_for resources_index_path do |f| %>
+  <%= f.text_field :title, placeholder: "Image/Article Title" %>
+  <br />
+  <br />
+  <%= f.file_field :document, placeholder: "Upload Your Image/GIF"%>
+  <br />
+  <br />
+  <%= f.text_field :link, placeholder: "Paste Article Link Here"%>
+  <%= f.select :publication, options_for_select([["Washington Post", 1],["New York Times", 3],["The Atlantic", 4], ["Al Jazeera", 5], ["NPR", 6]]), {prompt: "Choose Your Source"}%>
+  <br />
+  <br />
+  <%= f.text_field :time, placeholder: "When Should This Popup?"%>
+  <%= f.hidden_field :podcast_id, :value => @podcast_id %>
+  <br>
+  <br>
+  <%= f.submit "Upload Popup"%>
+
+  <% end %>

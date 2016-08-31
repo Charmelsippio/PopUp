@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PopUp!</title>
+</head>
+<body>
+  <nav>
+    <span id="logo">Pop<span id="up">Up</span>!</span>
+    <ul>
+      <li><button class="nav_bar"><%= link_to 'Account Info', edit_admin_registration_path%></button></li>
+      <li><button id="nav_bar"><%= link_to 'Logout', destroy_admin_session_path, :method => :delete %></button></li>
+    </ul>
+  </nav>
+
+<div class="warpper_top">
+    <div class="twelve columns" id="intro_holder">
+      <div class="six columns" id="intro_block">
+      <h2>Your PopUp Details</h2>
+      </div>
+
+      <div class="six columns" id="info_block">
+      <p> Below are your PopUp! details for your podcasts.
+      </div>
+    </div>
+  </div>
+
+
+<br>
+<br>
+<div>
+  <% if @articles.present? %>
+    <% @articles.each do |article|%>
+      <br>
+      <br>
+      <br>
+      <br>
+    <div class="twelve columns" id="articles">
+    <strong>Title:</strong>
+    <%= article.title %>
+      <br />
+      <br />
+    <strong>Link</strong>
+      <%= article.resource.link %><br>
+      <%= article.content %>
+      <br />
+      <br />
+    <button><%= link_to 'Edit', edit_podcast_resource_path(@podcast, article.resource)%></button>
+    <button><%= link_to 'Delete', podcast_resource_path(@podcast, article.resource), method: :delete  %></button>
+    <br />
+    <br />
+    </div> 
+   <% end %>
+  <% end %>
+  <br>
+  <button><%= link_to 'Profile', podcasts_path %></button>
+</div>
+<br />
+
+</body>
+</html>
+

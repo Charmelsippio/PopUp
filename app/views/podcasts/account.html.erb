@@ -1,0 +1,28 @@
+<div id="admin_info">
+  <h2>Your account information:</h2>
+  <br />
+  <br />
+  <div id="avatar">
+    <!-- < % = image_tag @admin.avatar.url(: medium) % > -->
+  </div>
+
+</div>
+<div>
+  <% if @admin.present? %>
+    <% @admin.each do |admin|%>
+  <strong>Name:</strong>
+  <%= admin.first_name %> <%= admin.last_name %>
+  <br />
+  <br />
+  <strong>Email:</strong>
+  <%= admin.email %>
+  <br />
+  <br />
+  <strong>Password:</strong>
+   Hidden for security
+  <br>
+  <br>
+  <td><button><%= link_to 'Edit', edit_admin_registration_path %></button></td>
+  <%end%>
+  <%end%>
+</div>

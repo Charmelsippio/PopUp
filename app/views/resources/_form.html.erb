@@ -1,0 +1,20 @@
+<div class="row" id="podcasts_block">
+  <div class="five columns" id="inner_block">
+    
+  <%= form_for [@podcast, @resource] do |f| %>
+  <div id="mini_border">
+  <%= f.text_field :title, placeholder: "Image/Article Title" %>
+  <br />
+  <%= f.file_field :document, placeholder: "Upload Your Image/GIF"%>
+  <br />
+  <%= f.text_field :link, placeholder: "Paste Article Link Here"%>
+  <%= f.select :publication, options_for_select([["Washington Post", 1],["New York Times", 3],["The Atlantic", 4], ["Al Jazeera", 5], ["NPR", 6]]), {prompt: "Choose Your Source"}%>
+  <br />
+  <%= f.text_field :time, placeholder: "When Should This Popup?"%>
+  <%= f.hidden_field :podcast_id, :value => @podcast_id %>
+  <br>
+  <%= f.submit "Upload Popup"%>
+    </div>
+  <% end %>
+  </div>
+</div>

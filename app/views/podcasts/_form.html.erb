@@ -1,0 +1,18 @@
+<div class="row" id="podcasts_block">
+  <div class="five columns" id="inner_block">
+<%= form_for @podcast do |f| %>
+  <%= f.text_field :title, placeholder: "Episode Title" %>
+  <br />
+  <br />
+  <%= f.file_field :audio, placeholder: "Upload Your Podcast"%>
+  <br />
+  <br />
+  <%= f.text_field :length, placeholder: "Podcast Length"%>
+  <br />
+  <br />
+  <%= f.submit "Upload Episode"%>
+
+<% end %>
+
+</div>
+</div>

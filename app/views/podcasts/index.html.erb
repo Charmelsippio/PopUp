@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popup!</title>
+</head>
+<body>
+  <nav>
+    <span id="logo">Pop<span id="up">Up</span>!</span>
+    <ul>
+      <li><button><%= link_to 'Account Info', edit_admin_registration_path%></button></li>
+      <li><button><%= link_to 'Logout', destroy_admin_session_path, :method => :delete %></button></li>
+    </ul>
+  </nav>
+  <div class="warpper_top">
+    <div class="twelve columns" id="intro_holder">
+      <div class="six columns" id="block_intro">
+      <h2>Upload Your Podcast</h2>
+      <button><%= link_to 'Add A Podcast', new_podcast_path %></button>
+      </div>
+
+      <div class="six columns" id="info_block">
+      <p> You can upload and view all of your podcasts here. Related content can be added by creating a PopUp! PopUps will be displayed as the listener makes their way through your episode. 
+      </div>
+    </div>
+  </div>
+
+<br>
+<br>
+  <div class="row" id="podcasts_block">
+  <div class="five columns" id="inner_block">
+  <% if @podcasts.present? %>
+    <% @podcasts.each do |podcast|%>
+    <div id="mini_border">
+      <!-- <strong>Title:</strong> -->
+      <strong><%= podcast.title %></strong><br>
+      <!-- <strong>File Name:</strong> -->
+      <%= podcast.audio_file_name%><br>
+       <%= audio_tag(podcast.audio.url, controls: true)%><br>
+      <!-- <strong>Length:</strong> -->
+      <!-- < % = podcast.length % ><br> -->
+        <button><%= link_to 'Add Popup', new_podcast_resource_path(podcast) %></button>
+        <button><%= link_to 'View Popup', podcast_resources_path(podcast) %></button>
+        <button><%= link_to 'Edit', edit_podcast_path(podcast)%></button>
+        <button><%= link_to 'Delete', podcast_path(podcast), method: :delete  %></button>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>
+
+</body>
+</html>
+ 

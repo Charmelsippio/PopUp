@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popup</title>
+  <%javascript_include_tag "main.js"%>
+ </head>
+<body>
+  <nav>
+    <span id="logo">Pop<span id="up">Up</span>!</span>
+    <ul>
+      <li><button class="ft_pg"><%= link_to "Sign Up", new_admin_registration_path %></button></li>
+      <li><button class="ft_pg"><%= link_to "Sign In", new_admin_session_path %></button></li>
+    </ul>
+  </nav>
+  <div class="wrapper_top">
+    <div class="twelve columns" id="intro_holder">
+      <div class="six columns" id="intro_block">
+        <h3>Welcome to</h3>
+        <h1><span id="intro_pop">Pop<span id="up">Up</span>!</span></h1>
+      </div>
+      <div class="six columns" id="info_block">
+        <p> PopUp! is an interactive and immersive podcast listening expereince. Each episode has additional currated content, such as pictures, gifs, articles or documents, that "pops up" to give you better context and insight into the conversation. </p> 
+      <!--   PopUp!: An interactive and immersive podcast listening expereince with currated content that "pops up" to give you better context and insight into the conversation. -->
+      </div>
+    </div>
+  </div>
+  
+  <div class="row" id="podcasts_block">
+    <div class="five columns" id="inner_block">
+      <% if @podcasts.present? %>
+        <% @podcasts.each do |podcast|%>
+        <div id="mini_border">
+          <!-- <strong>Title:</strong> -->
+          <strong><%= podcast.title %></strong><br>
+          <!-- <strong>File Name:</strong> -->
+          <%= podcast.audio_file_name%><br>
+           <!-- <strong>Swag:</strong>  -->
+          <%= audio_tag(podcast.audio.url, controls: true)%>
+          <br>
+          <!-- <strong>Length:</strong> -->
+          <!-- < % = podcast.length % ><br> -->
+        </div> <!-- end mini_border -->
+        <% end %>
+      <% end %> 
+    </div> <!-- end of five columns -->
+  </div> <!-- end of podcast_block -->
+
+<div class="row">
+  <div class="seven columns" id="resources_block">
+    <% if @articles.present? %>
+      <% @articles.each do |article|%>
+        <button class="accordion" onclick="accordion()">
+        <%= article.title %>
+        </button>
+        <div class="panel">
+        <!--         <strong>Link</strong> -->
+        <!-- < % = article.resource.link % > -->
+        <%= article.content %>
+        </div>
+        <br />
+        <br />
+      <% end %>
+    <% end %>
+  </div>
+</div>
+</body>
+</html>
